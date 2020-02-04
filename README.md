@@ -10,6 +10,10 @@ cat inventory.sql | docker-compose exec -T sqlserver bash -c '/opt/mssql-tools/b
 # Start SQL Server connector
 curl -i -X POST -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:8083/connectors/ -d @register-sqlserver.json
 
+# list availabe kafka topics
+docker-compose exec kafka /kafka/bin/kafka-topics.sh --list \
+    --bootstrap-server kafka:9092
+    
 # Consume messages from a Debezium topic
 docker-compose exec kafka /kafka/bin/kafka-console-consumer.sh \
     --bootstrap-server kafka:9092 \
