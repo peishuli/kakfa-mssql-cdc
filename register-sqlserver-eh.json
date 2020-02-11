@@ -1,0 +1,29 @@
+{
+    "name": "inventory-connector",
+    "config": {
+        "connector.class" : "io.debezium.connector.sqlserver.SqlServerConnector",
+        "tasks.max" : "1",
+        "database.server.name" : "server1",
+        "database.hostname" : "sqlserver",
+        "database.port" : "1433",
+        "database.user" : "sa",
+        "database.password" : "Password!",
+        "database.dbname" : "testDB",
+        "database.history.kafka.bootstrap.servers" : "pli-kafka-eh.servicebus.windows.net:9093",
+        "database.history.kafka.topic": "schema-changes.inventory",
+        "database.history.security.protocol": "SASL_SSL",
+        "database.history.sasl.mechanism": "PLAIN",
+        "database.history.sasl.config": "org.apache.kafka.common.security.plain.PlainLoginModule required username='$ConnectionString' password='Endpoint=sb://pli-kafka-eh.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=7femNhqcSmcBdHZtUn0eRm4nt4A7Re+4YzjjRTmi9aE='",
+        "database.history.producer.security.protocol": "SASL_SSL",
+        "database.history.producer.sasl.mechanism": "PLAIN",
+        "database.history.producer.sasl.config": "org.apache.kafka.common.security.plain.PlainLoginModule required username='$ConnectionString' password='Endpoint=sb://pli-kafka-eh.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=7femNhqcSmcBdHZtUn0eRm4nt4A7Re+4YzjjRTmi9aE='",
+        "database.history.consumer.security.protocol": "SASL_SSL",
+        "database.history.consumer.sasl.mechanism": "PLAIN",
+        "database.history.consumer.sasl.config": "org.apache.kafka.common.security.plain.PlainLoginModule required username='$ConnectionString' password='Endpoint=sb://pli-kafka-eh.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=7femNhqcSmcBdHZtUn0eRm4nt4A7Re+4YzjjRTmi9aE='",
+        "database.history.plugin.path": "kakfa/libs",
+        "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "key.converter.schemas.enable": "false",
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "value.converter.schemas.enable": "false"
+    }
+}
